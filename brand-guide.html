@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Style Guide — Redondo Beach Center for Spiritual Living</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .guide-header {
+    background: var(--color-onyx);
+    color: var(--color-white);
+    padding: 64px 0 40px;
+  }
+  .guide-header .eyebrow { color: var(--color-overcast); }
+  .guide-header h1 { color: var(--color-white); margin-bottom: 12px; }
+  .guide-header p { color: rgba(255,255,255,0.75); max-width: 60ch; }
+  .guide-nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .guide-nav .container { display: flex; gap: 28px; padding: 14px 24px; overflow-x: auto; }
+  .guide-nav a { font-family: var(--font-primary); font-size: 0.85rem; font-weight: 700; color: var(--color-onyx-soft); white-space: nowrap; }
+  .guide-nav a:hover { color: var(--color-cobalt); }
+  .guide-section { padding: 64px 0; border-bottom: 1px solid var(--color-border); }
+  .guide-section h2 { margin-bottom: 8px; }
+  .guide-section > .container > p.intro { max-width: 70ch; margin-bottom: 40px; }
+  .swatch-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+  .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border); }
+  .swatch .chip { height: 110px; }
+  .swatch .info { padding: 14px 16px; background: var(--color-white); color: var(--color-onyx); }
+  .swatch .info .name { font-family: var(--font-primary); font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+  .swatch .info code { font-size: 0.78rem; color: var(--color-onyx-soft); }
+  .swatch .info .role { font-size: 0.75rem; color: var(--color-onyx-faint); margin-top: 6px; }
+  @media (max-width: 900px) { .swatch-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .tint-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 16px; }
+  .tint-grid .tint { border-radius: var(--radius-sm); padding: 10px; font-size: 0.7rem; font-family: var(--font-primary); font-weight: 700; border: 1px solid var(--color-border); }
+  @media (max-width: 700px) { .tint-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .swatch-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .tint-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .swatch-grid.cols-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .tint-grid.cols-4 { grid-template-columns: repeat(2, 1fr); } }
+
+  .relate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 800px) { .relate-grid { grid-template-columns: 1fr; } }
+
+  .band-night .guide-section, .band-night code { color: inherit; }
+  .band-night .intro { color: rgba(255,255,255,0.72); }
+  .band-night h2 { color: var(--color-white); }
+
+  .type-row { display: flex; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px dashed var(--color-border); }
+  .type-row:last-child { border-bottom: none; }
+  .type-row .label { width: 140px; flex-shrink: 0; font-family: var(--font-primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-onyx-faint); }
+  .type-sample-block { margin-bottom: 44px; }
+  .type-sample-block .face-label { font-family: var(--font-primary); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-cobalt); margin-bottom: 10px; }
+
+  .component-block { margin-bottom: 48px; }
+  .component-block h3 { margin-bottom: 18px; }
+  .btn-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .dark-demo { background: var(--color-onyx); padding: 24px; border-radius: var(--radius-md); }
+
+  .logo-demo { display: flex; align-items: center; justify-content: center; padding: 48px; background: var(--color-sand); border-radius: var(--radius-md); }
+  .logo-demo.dark { background: var(--color-onyx); }
+  .logo-demo.dark .brand-logo, .logo-demo.dark .wordmark .top { color: var(--color-white); }
+  .clearspace-demo {
+    display: inline-flex;
+    padding: 24px;
+    border: 2px dashed var(--color-overcast);
+    border-radius: 8px;
+  }
+
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .do-dont .box { border-radius: var(--radius-md); padding: 24px; }
+  .do-dont .do { background: var(--color-cobalt-tint); border: 1px solid var(--color-cobalt-tint-2); }
+  .do-dont .dont { background: #F6E8E6; border: 1px solid #E9C9C4; }
+  .do-dont .label { font-family: var(--font-primary); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+  .do-dont .do .label { color: #036B3A; }
+  .do-dont .dont .label { color: #A5342A; }
+  @media (max-width: 700px) { .do-dont { grid-template-columns: 1fr; } }
+
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 700px) { .voice-grid { grid-template-columns: 1fr; } }
+  .voice-card { background: var(--color-sand); border-radius: var(--radius-md); padding: 28px; }
+  .voice-card h4 { font-family: var(--font-primary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-cobalt); margin-bottom: 14px; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill { background: var(--color-white); border: 1px solid var(--color-border); padding: 8px 16px; border-radius: 999px; font-family: var(--font-primary); font-weight: 600; font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<nav class="guide-nav">
+  <div class="container">
+    <a href="#colors">Core Palette</a>
+    <a href="#kids-palette">Children's Palette</a>
+    <a href="#teen-palette">Teen Camp Palette</a>
+    <a href="#type">Typography</a>
+    <a href="#logo">Logo</a>
+    <a href="#buttons">Components</a>
+    <a href="#voice">Voice &amp; Tone</a>
+    <a href="#imagery">Imagery Placeholders</a>
+    <a href="index.html" style="color: var(--color-cobalt);">&larr; Back to site</a>
+  </div>
+</nav>
+
+<header class="guide-header">
+  <div class="container">
+    <span class="eyebrow">Brand Style Guide</span>
+    <h1>Redondo Beach Center for Spiritual Living</h1>
+    <p>A living reference for the site's design system. The core palette and type come from the official brand book; the Children's Program and Teen Camp palettes were sampled pixel-for-pixel out of the approved mockup. Review this page first — every color, type style, and component below is what the rest of the site will be built from.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;">
+      <span class="pill" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:#fff;">Core &mdash; brand book</span>
+      <span class="pill" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:#fff;">Children's &mdash; mockup pg 2</span>
+      <span class="pill" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:#fff;">Teen Camp &mdash; mockup pg 3</span>
+    </div>
+  </div>
+</header>
+
+<section class="guide-section" id="colors">
+  <div class="container">
+    <h2>Core Brand Palette</h2>
+    <p class="intro">The five brand colors, exactly as defined in the brand book. These carry the whole site: navigation, footer, body text, and every primary call to action. The program sub-palettes below layer on top of this foundation — they never replace it.</p>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="chip" style="background:#FFFFFF; border-bottom:1px solid var(--color-border);"></div>
+        <div class="info"><div class="name">Pure White</div><code>#FFFFFF</code><div class="role">Base / surfaces</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#034C8C;"></div>
+        <div class="info"><div class="name">Deep Cobalt</div><code>#034C8C</code><div class="role">Primary / CTAs / links</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#2F2E2E;"></div>
+        <div class="info"><div class="name">Onyx Black</div><code>#2F2E2E</code><div class="role">Text / footer / dark bands</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#84A4A9;"></div>
+        <div class="info"><div class="name">Overcast Blue</div><code>#84A4A9</code><div class="role">Secondary accent</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#CCCCCC;"></div>
+        <div class="info"><div class="name">Pale Greige</div><code>#CCCCCC</code><div class="role">Borders / muted bg</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px;">Derived Tints &amp; Shades</h3>
+    <p class="intro" style="margin-bottom:12px;">Used for badges, hover states, and quiet surfaces — mixed from the core five.</p>
+    <div class="tint-grid">
+      <div class="tint" style="background:var(--color-cobalt-dark); color:#fff;">Cobalt Dark<br>#023861</div>
+      <div class="tint" style="background:var(--color-cobalt-tint);">Cobalt Tint<br>#E6EDF4</div>
+      <div class="tint" style="background:var(--color-cobalt-tint-2);">Cobalt Tint 2<br>#CFDCEA</div>
+      <div class="tint" style="background:var(--color-overcast-tint-2);">Overcast Tint<br>#CFDEE0</div>
+      <div class="tint" style="background:var(--color-sand-dark);">Sand Dark<br>#F4F1EC</div>
+      <div class="tint" style="background:var(--color-border);">Border<br>#E1E0DE</div>
+    </div>
+
+    <h3 style="margin-top:48px;">Shared Section Neutrals</h3>
+    <p class="intro" style="margin-bottom:12px;">Sampled from the mockup — these two alternating backgrounds give every page its rhythm, and they are consistent across the main site, the children's page, and the teen page.</p>
+    <div class="grid grid-2">
+      <div class="swatch">
+        <div class="chip" style="background:#FBF8F3;"></div>
+        <div class="info"><div class="name">Warm Cream</div><code>#FBF8F3</code><div class="role">Primary section background — warm, welcoming, the site's default canvas</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#EEF3F6;"></div>
+        <div class="info"><div class="name">Cool Mist</div><code>#EEF3F6</code><div class="role">Alternating band — cool counterpoint, echoes Overcast Blue</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section band-cream" id="kids-palette">
+  <div class="container">
+    <span class="eyebrow">Sub-Brand &mdash; Sampled from Mockup pg 2</span>
+    <h2>Children's Program Palette</h2>
+    <p class="intro">Four bright accents that make the children's pages feel joyful and safe without abandoning the parent brand. Deep Cobalt still owns the nav, footer, headlines, and primary buttons — these colors appear only as <strong>badges, soft tiles, avatars, and small highlights</strong>. Think confetti on top of the brand, not a repaint.</p>
+
+    <div class="swatch-grid cols-4">
+      <div class="swatch">
+        <div class="chip" style="background:#FCC632;"></div>
+        <div class="info"><div class="name">Sunbeam Yellow</div><code>#FCC632</code><div class="role">Ages 3 badge · highlight underline</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#FF8B6B;"></div>
+        <div class="info"><div class="name">Coral Warmth</div><code>#FF8B6B</code><div class="role">Ages 10 badge · accent stars</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#9DD859;"></div>
+        <div class="info"><div class="name">Meadow Green</div><code>#9DD859</code><div class="role">Ages 6 badge · growth cues</div></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#5CC0EC;"></div>
+        <div class="info"><div class="name">Sky Blue</div><code>#5CC0EC</code><div class="role">Playful accent · bridges to Deep Cobalt</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:44px;">Pastel Tile Tints</h3>
+    <p class="intro" style="margin-bottom:12px;">The desaturated versions used for the "Big lessons, wrapped in play" feature tiles. Text on these tiles stays Onyx Black for full readability.</p>
+    <div class="tint-grid cols-4">
+      <div class="tint" style="background:#FFF6E0;">Pale Sun<br>#FFF6E0</div>
+      <div class="tint" style="background:#FDEEE9;">Pale Coral<br>#FDEEE9</div>
+      <div class="tint" style="background:#EDF7DF;">Pale Meadow<br>#EDF7DF</div>
+      <div class="tint" style="background:#E7F6FB;">Pale Sky<br>#E7F6FB</div>
+    </div>
+
+    <h3 style="margin-top:44px;">In Context</h3>
+    <div class="grid grid-4" style="margin-bottom:28px;">
+      <div class="tile-soft soft-yellow">
+        <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5a2 2 0 012-2h12a2 2 0 012 2v14l-4-3-4 3-4-3z"/></svg></div>
+        <h3>Story &amp; Wonder</h3>
+        <p>Meaningful stories that spark curiosity about kindness, courage, and gratitude.</p>
+      </div>
+      <div class="tile-soft soft-coral">
+        <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3>Creative Arts</h3>
+        <p>Hands-on crafts and projects that let each child express their unique light.</p>
+      </div>
+      <div class="tile-soft soft-green">
+        <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>Music &amp; Movement</h3>
+        <p>Singing, dancing, and games that get the whole body joyfully involved.</p>
+      </div>
+      <div class="tile-soft soft-sky">
+        <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Mindful Moments</h3>
+        <p>Simple breathing and gratitude practices kids carry into everyday life.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card" style="text-align:center;">
+        <div class="card-body">
+          <span class="badge-age age-yellow">Ages 3&ndash;5</span>
+          <h3 style="margin-top:14px;">Little Lights</h3>
+          <p style="font-size:0.85rem; color:var(--color-cobalt); font-weight:600;">Preschool</p>
+          <p style="font-size:0.88rem;">Gentle play, songs, and simple stories in a cozy, nurturing room.</p>
+        </div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-body">
+          <span class="badge-age age-green">Ages 6&ndash;9</span>
+          <h3 style="margin-top:14px;">Bright Explorers</h3>
+          <p style="font-size:0.85rem; color:var(--color-cobalt); font-weight:600;">Elementary</p>
+          <p style="font-size:0.88rem;">Interactive lessons, creative arts, and friendship-building activities.</p>
+        </div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-body">
+          <span class="badge-age age-coral">Ages 10&ndash;12</span>
+          <h3 style="margin-top:14px;">Rising Leaders</h3>
+          <p style="font-size:0.85rem; color:var(--color-cobalt); font-weight:600;">Pre-teens</p>
+          <p style="font-size:0.88rem;">Deeper conversations, service projects, and real leadership moments.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:28px; flex-wrap:wrap; margin-top:32px; align-items:center;">
+      <div class="testimonial-person"><div class="avatar av-yellow">SM</div><div><div class="name">Sarah Mitchell</div><div class="sub">Children's Ministry Director</div></div></div>
+      <div class="testimonial-person"><div class="avatar av-green">JC</div><div><div class="name">James Carter</div><div class="sub">Lead Teacher, Bright Explorers</div></div></div>
+      <div class="testimonial-person"><div class="avatar av-coral">AR</div><div><div class="name">Ana Rivera</div><div class="sub">Little Lights Coordinator</div></div></div>
+    </div>
+
+    <p style="margin-top:32px; font-size:1.6rem; font-family:var(--font-primary); font-weight:700;">
+      Where little hearts learn they are <span class="underline-brush">loved, capable &amp; whole</span>
+    </p>
+  </div>
+</section>
+
+<section class="guide-section band-night" id="teen-palette">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--teen-teal);">Sub-Brand &mdash; Sampled from Mockup pg 3</span>
+    <h2 class="heading-impact">Teen Camp Palette</h2>
+    <p class="intro">The highest-energy expression of the brand — dark backgrounds, electric accents, and bold uppercase type. Reserved strictly for teen camp campaigns and the teens page. Note that the mockup's dominant blue sampled at <code style="color:var(--teen-teal);">#034D8C</code> — within a hair of brand Deep Cobalt <code style="color:var(--teen-teal);">#034C8C</code> — so even at its loudest, this sub-brand stays anchored to the parent palette.</p>
+
+    <div class="swatch-grid cols-4">
+      <div class="swatch" style="border-color:rgba(255,255,255,0.15);">
+        <div class="chip" style="background:#12C7B4;"></div>
+        <div class="info"><div class="name">Electric Teal</div><code>#12C7B4</code><div class="role">Primary teen CTA · key headline word</div></div>
+      </div>
+      <div class="swatch" style="border-color:rgba(255,255,255,0.15);">
+        <div class="chip" style="background:#FEB123;"></div>
+        <div class="info"><div class="name">Signal Amber</div><code>#FEB123</code><div class="role">Marquee strip · emphasis · highlight cards</div></div>
+      </div>
+      <div class="swatch" style="border-color:rgba(255,255,255,0.15);">
+        <div class="chip" style="background:#233240;"></div>
+        <div class="info"><div class="name">Slate Night</div><code>#233240</code><div class="role">Dark section background</div></div>
+      </div>
+      <div class="swatch" style="border-color:rgba(255,255,255,0.15);">
+        <div class="chip" style="background:#203132;"></div>
+        <div class="info"><div class="name">Forest Shadow</div><code>#203132</code><div class="role">Deepest background · text on bright accents</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:44px;">In Context</h3>
+    <div style="background:var(--teen-forest); border-radius: var(--radius-md); padding:44px; margin-bottom:24px;">
+      <span class="eyebrow" style="color:var(--teen-teal);">Summer Camp 2026</span>
+      <div class="heading-impact" style="font-size:clamp(1.8rem,4vw,2.8rem); color:#fff; margin-bottom:20px;">
+        Feel free.<br>Be real.<br><span class="text-teal">Find your</span> <span class="text-amber">people.</span>
+      </div>
+      <p style="color:rgba(255,255,255,0.72); max-width:48ch;">Drop the mask. Laugh till it hurts. Discover how powerful you already are — surrounded by people who actually get you.</p>
+      <div class="btn-row" style="margin-top:24px; margin-bottom:0;">
+        <button class="btn btn-teal">Claim My Spot</button>
+        <button class="btn btn-outline-light">Watch the Recap</button>
+      </div>
+    </div>
+
+    <div class="marquee-strip" style="border-radius: var(--radius-sm); margin-bottom:24px;">
+      <div class="marquee-inner">
+        <span>New Friends</span><span>Campfire Nights</span><span>Real Talk</span><span>Lake Days</span><span>Zero Judgment</span><span>Best Week Ever</span>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="teen-card card-teal"><h3>Real Talk</h3><p>Honest circles where nothing is off limits and no one gets judged.</p></div>
+      <div class="teen-card card-amber"><h3>Campfire Jams</h3><p>Singalongs and quiet late-night conversations under a sky full of stars.</p></div>
+      <div class="teen-card card-cobalt"><h3>Go Explore</h3><p>Hikes, lake days, and games that light up parts of you that felt asleep.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section" id="type">
+  <div class="container">
+    <h2>Typography</h2>
+    <p class="intro">Open Sans is the primary typeface for headlines and UI elements. Helvetica Neue (system stack) is the secondary typeface used for body copy — matching the brand book's two-typeface hierarchy.</p>
+
+    <div class="type-sample-block">
+      <div class="face-label">Primary — Open Sans (Headings / UI)</div>
+      <div class="type-row"><span class="label">H1 / 56px</span><span style="font-family: var(--font-primary); font-weight:700; font-size:3.2rem;">Discover a community</span></div>
+      <div class="type-row"><span class="label">H2 / 40px</span><span style="font-family: var(--font-primary); font-weight:700; font-size:2.3rem;">A place for every generation</span></div>
+      <div class="type-row"><span class="label">H3 / 20px</span><span style="font-family: var(--font-primary); font-weight:700; font-size:1.25rem;">Sunday Celebration</span></div>
+      <div class="type-row"><span class="label">Button / 15px</span><span style="font-family: var(--font-primary); font-weight:600; font-size:0.95rem;">Join Us Sunday</span></div>
+    </div>
+
+    <div class="type-sample-block">
+      <div class="face-label">Secondary — Helvetica Neue (Body Copy)</div>
+      <div class="type-row"><span class="label">Body / 17px</span><span style="font-family: var(--font-secondary); font-size:1.05rem;">Wherever you are on your journey, you belong here.</span></div>
+      <div class="type-row"><span class="label">Small / 14px</span><span style="font-family: var(--font-secondary); font-size:0.9rem; color:var(--color-onyx-soft);">Sundays 10:00 AM &middot; Wednesdays 7:00 PM Online</span></div>
+    </div>
+
+    <div class="type-sample-block" style="margin-bottom:0;">
+      <div class="face-label">Teen Camp &mdash; Impact Treatment</div>
+      <p style="margin-bottom:16px; font-size:0.9rem;">Same Open Sans family, pushed to ExtraBold + uppercase + tight leading. This is a <em>treatment</em>, not a new typeface — the teen pages stay typographically part of the brand.</p>
+      <div style="background:var(--teen-forest); padding:28px; border-radius: var(--radius-md);">
+        <div class="heading-impact" style="font-size:2.2rem; color:#fff;">Your people are <span class="text-teal">waiting.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section" id="logo">
+  <div class="container">
+    <h2>Logo Lockup</h2>
+    <p class="intro">A placeholder wordmark lockup, styled per the brand book's clear-space and minimum-size rules, until the official logo file is supplied.</p>
+    <div class="grid grid-2">
+      <div class="logo-demo">
+        <div class="clearspace-demo">
+          <div class="brand-logo">
+            <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="19" stroke="#034C8C" stroke-width="1.5"/>
+              <path d="M20 6 L20 34 M8 12 L32 28 M8 28 L32 12" stroke="#84A4A9" stroke-width="1.5"/>
+              <circle cx="20" cy="20" r="5" fill="#034C8C"/>
+            </svg>
+            <span class="wordmark"><span class="top">Spiritual Living</span><span class="bottom">Redondo Beach</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="logo-demo dark">
+        <div class="brand-logo">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" stroke="#FFFFFF" stroke-width="1.5"/>
+            <path d="M20 6 L20 34 M8 12 L32 28 M8 28 L32 12" stroke="#84A4A9" stroke-width="1.5"/>
+            <circle cx="20" cy="20" r="5" fill="#FFFFFF"/>
+          </svg>
+          <span class="wordmark"><span class="top">Spiritual Living</span><span class="bottom">Redondo Beach</span></span>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:16px; font-size:0.85rem;">Dashed line = minimum clear space. Replace this mark with the official CSL sunburst logo file when available.</p>
+  </div>
+</section>
+
+<section class="guide-section" id="buttons">
+  <div class="container">
+    <h2>Buttons &amp; Components</h2>
+
+    <div class="component-block">
+      <h3>Buttons</h3>
+      <div class="btn-row">
+        <button class="btn btn-primary">Primary Action</button>
+        <button class="btn btn-secondary">Secondary Action</button>
+        <button class="btn btn-primary btn-sm">Small Primary</button>
+      </div>
+      <div class="dark-demo">
+        <div class="btn-row" style="margin-bottom:0;">
+          <button class="btn btn-light">On Dark — Light</button>
+          <button class="btn btn-ghost">On Dark — Ghost</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-block">
+      <h3>Cards</h3>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="art tone-cobalt" data-label="Placeholder"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L10 18L20 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="card-body">
+            <span class="tag">Weekly</span>
+            <div class="meta">Sunday &middot; 10:00 AM</div>
+            <h3>Sunday Celebration</h3>
+            <p>Inspiring talks, live music, and meditation. Coffee &amp; connection to follow.</p>
+            <span class="link-arrow">Plan your visit &rarr;</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="art tone-overcast" data-label="Placeholder"></div>
+          <div class="card-body">
+            <span class="tag">08.20</span>
+            <div class="meta">Saturday &middot; 6:00 PM</div>
+            <h3>Sound Bath &amp; Meditation</h3>
+            <p>An evening of deep rest and renewal. Bring a mat, blanket, and open heart.</p>
+            <span class="link-arrow">Reserve a spot &rarr;</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="art tone-sand" data-label="Placeholder"></div>
+          <div class="card-body">
+            <span class="tag">08.04</span>
+            <div class="meta">Monday &middot; 7:00 PM</div>
+            <h3>Foundations Class</h3>
+            <p>A six-week introduction to the Science of Mind and living life empowered.</p>
+            <span class="link-arrow">Enroll now &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-block">
+      <h3>Testimonial &amp; Mission Banner</h3>
+      <div class="grid grid-2">
+        <div class="testimonial">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"I walked in a stranger and left feeling like family. This community changed how I see myself and the world."</p>
+          <div class="testimonial-person">
+            <div class="avatar">MR</div>
+            <div><div class="name">Maria R.</div><div class="sub">Member since 2019</div></div>
+          </div>
+        </div>
+        <div class="band-cobalt" style="border-radius: var(--radius-md); padding: 32px;">
+          <div class="quote-banner" style="margin:0;">
+            <span class="eyebrow">Our Mission</span>
+            <blockquote style="font-size:1.15rem; margin-bottom:0;">"We create a nurturing space where every person is empowered to grow, to give, and to live a life of purpose — together."</blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-block">
+      <h3>Palette Usage Rules</h3>
+      <p class="intro" style="margin-bottom:20px;">Three palettes, one brand. These rules keep the sub-brands energetic without letting the site drift apart.</p>
+      <div class="do-dont">
+        <div class="box do">
+          <div class="label">Do</div>
+          <ul style="margin:0; padding-left:0; font-size:0.92rem; line-height:1.75;">
+            <li>&bull; Keep nav, footer, and body text on the core palette on <em>every</em> page.</li>
+            <li>&bull; Scope the children's accents to children's pages, teen accents to teen pages.</li>
+            <li>&bull; Use bright accents for badges, tiles, and highlights &mdash; small doses.</li>
+            <li>&bull; Alternate Warm Cream and Cool Mist to give pages rhythm.</li>
+            <li>&bull; Put Onyx or Forest Shadow text on yellow, amber, green, and teal.</li>
+          </ul>
+        </div>
+        <div class="box dont">
+          <div class="label">Don't</div>
+          <ul style="margin:0; padding-left:0; font-size:0.92rem; line-height:1.75;">
+            <li>&bull; Mix the children's and teen accents in the same section.</li>
+            <li>&bull; Bring teen darks or electric teal onto the homepage or core pages.</li>
+            <li>&bull; Use a sub-brand color for a primary CTA outside its own program.</li>
+            <li>&bull; Set white text on Sunbeam Yellow, Meadow Green, or Signal Amber &mdash; it fails contrast.</li>
+            <li>&bull; Introduce any hue not listed on this page.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-block">
+      <h3>How the Three Palettes Relate</h3>
+      <div class="relate-grid">
+        <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border);">
+          <div style="background:var(--color-cobalt); height:8px;"></div>
+          <div style="padding:20px;">
+            <div style="font-family:var(--font-primary); font-weight:700; margin-bottom:6px;">Core</div>
+            <p style="font-size:0.85rem; margin:0;">Home, About, Community, Events, Give, Contact. Calm, grounded, timeless.</p>
+            <div style="display:flex; gap:6px; margin-top:14px;">
+              <span style="width:22px;height:22px;border-radius:50%;background:#034C8C;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#2F2E2E;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#84A4A9;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#CCCCCC;"></span>
+            </div>
+          </div>
+        </div>
+        <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border);">
+          <div style="background:linear-gradient(90deg,#FCC632,#FF8B6B,#9DD859,#5CC0EC); height:8px;"></div>
+          <div style="padding:20px;">
+            <div style="font-family:var(--font-primary); font-weight:700; margin-bottom:6px;">Children's Program</div>
+            <p style="font-size:0.85rem; margin:0;">Core palette + four bright accents. Warm, playful, reassuring to parents.</p>
+            <div style="display:flex; gap:6px; margin-top:14px;">
+              <span style="width:22px;height:22px;border-radius:50%;background:#FCC632;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#FF8B6B;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#9DD859;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#5CC0EC;"></span>
+            </div>
+          </div>
+        </div>
+        <div style="border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border);">
+          <div style="background:linear-gradient(90deg,#12C7B4,#FEB123,#233240); height:8px;"></div>
+          <div style="padding:20px;">
+            <div style="font-family:var(--font-primary); font-weight:700; margin-bottom:6px;">Teen Camp</div>
+            <p style="font-size:0.85rem; margin:0;">Dark mode + electric accents + uppercase impact type. Loud on purpose.</p>
+            <div style="display:flex; gap:6px; margin-top:14px;">
+              <span style="width:22px;height:22px;border-radius:50%;background:#12C7B4;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#FEB123;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#233240;"></span>
+              <span style="width:22px;height:22px;border-radius:50%;background:#203132;"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section" id="voice">
+  <div class="container">
+    <h2>Voice &amp; Tone</h2>
+    <p class="intro">Straight from the brand book's Brand Voice section — this shapes every headline and paragraph of placeholder copy on the site.</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <h4>Aesthetic</h4>
+        <div class="pill-row">
+          <span class="pill">Natural Vitality</span>
+          <span class="pill">Modern Sanctuary</span>
+          <span class="pill">Inclusive Community</span>
+          <span class="pill">Expansive Peace</span>
+          <span class="pill">Grounded Growth</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <h4>Tone of Voice</h4>
+        <div class="pill-row">
+          <span class="pill">Welcoming</span>
+          <span class="pill">Uplifting</span>
+          <span class="pill">Nurturing</span>
+          <span class="pill">Inspiring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section" id="imagery" style="border-bottom:none;">
+  <div class="container">
+    <h2>Imagery Placeholders</h2>
+    <p class="intro">No real photography has been supplied yet, so the site uses self-contained, on-brand illustrated placeholders instead of random stock photos. Each is marked <code>data-placeholder</code> in the markup for easy swapping later. Tones are grouped by which palette the page belongs to.</p>
+
+    <h3>Core pages</h3>
+    <div class="grid grid-4" style="margin-bottom:32px;">
+      <div class="art tone-cobalt ratio-square" data-label="Core" data-placeholder="true"></div>
+      <div class="art tone-overcast ratio-square" data-label="Core" data-placeholder="true"></div>
+      <div class="art tone-sand ratio-square" data-label="Core" data-placeholder="true"></div>
+      <div class="art ratio-square" data-label="Core" data-placeholder="true" style="background: var(--color-onyx);"></div>
+    </div>
+
+    <h3>Children's Program</h3>
+    <div class="grid grid-4" style="margin-bottom:32px;">
+      <div class="art ratio-square" data-label="Kids" data-placeholder="true" style="background: linear-gradient(135deg,#FCC632,#FFD97A);"></div>
+      <div class="art ratio-square" data-label="Kids" data-placeholder="true" style="background: linear-gradient(135deg,#FF8B6B,#FFB29A);"></div>
+      <div class="art ratio-square" data-label="Kids" data-placeholder="true" style="background: linear-gradient(135deg,#9DD859,#C1E793);"></div>
+      <div class="art ratio-square" data-label="Kids" data-placeholder="true" style="background: linear-gradient(135deg,#5CC0EC,#96D8F4);"></div>
+    </div>
+
+    <h3>Teen Camp</h3>
+    <div class="grid grid-4">
+      <div class="art ratio-square" data-label="Teen" data-placeholder="true" style="background: linear-gradient(135deg,#12C7B4,#0EA695);"></div>
+      <div class="art ratio-square" data-label="Teen" data-placeholder="true" style="background: linear-gradient(135deg,#FEB123,#E09405);"></div>
+      <div class="art ratio-square" data-label="Teen" data-placeholder="true" style="background: linear-gradient(135deg,#233240,#3A4E60);"></div>
+      <div class="art ratio-square" data-label="Teen" data-placeholder="true" style="background: linear-gradient(135deg,#203132,#35494A);"></div>
+    </div>
+  </div>
+</section>
+
+<footer style="background: var(--color-onyx); color: rgba(255,255,255,0.6); text-align:center; padding: 28px 0; font-size: 0.85rem;">
+  Brand Style Guide &mdash; for internal review. Approve to continue building the full site.
+</footer>
+
+</body>
+</html>
